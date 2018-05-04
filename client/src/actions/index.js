@@ -1,7 +1,11 @@
 import axios from "axios";
 
-import { TASK } from "./types";
+import { FETCH_TASKS } from "./types";
 
+export const fetchTasks = () => async dispatch => {
+  const res = await axios.get("/api/tasks");
+  dispatch({ type: FETCH_TASKS, payload: res.data });
+};
 /*
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/current_user");
