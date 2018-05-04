@@ -6,8 +6,8 @@ import NewTask from "./NewTask";
 import TasksList from "./TasksList";
 
 class App extends Component {
-  async componentDidMount() {
-    await this.props.fetchTasks();
+  componentDidMount() {
+    this.props.fetchTasks();
   }
 
   render() {

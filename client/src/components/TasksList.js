@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class TasksList extends Component {
+  componentDidMount() {
+    this.props.fetchTasks();
+  }
+
   render() {
     const tasks = this.props.tasks || [];
-
+    console.log("CURREN TASKS", tasks);
     const listTasks = tasks.map(t => (
       <tr key={t._id}>
         <td>{t.name}</td>
@@ -29,4 +34,4 @@ class TasksList extends Component {
 function mapStateToProps({ tasks }) {
   return { tasks };
 }
-export default connect(mapStateToProps)(TasksList);
+export default connect(mapStateToProps, actions)(TasksList);
