@@ -34,7 +34,7 @@ class TasksList extends Component {
 
     this.setState({ currentTask: selected });
 
-    console.log(event.target);
+    //console.log(event.target);
 
     this.setState({ editMode: false, deleteMode: false });
   };
