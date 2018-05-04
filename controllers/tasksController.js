@@ -4,7 +4,7 @@ const TodoTask = mongoose.model("todoTasks");
 
 const readAll = (req, res) => {
   TodoTask.find((err, todoTasks) => {
-    err ? res.send(err) : res.json(todoTasks);
+    err ? res.send(err) : res.send(todoTasks);
   });
 };
 const create = (req, res) => {
