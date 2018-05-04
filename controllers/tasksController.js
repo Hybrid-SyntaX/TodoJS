@@ -47,6 +47,8 @@ const update = (req, res) => {
   });
 };
 const remove = (req, res) => {
+  const taskId = req.params.id;
+
   TodoTask.remove(
     {
       _id: req.params.id
@@ -54,7 +56,7 @@ const remove = (req, res) => {
     (err, todoTask) => {
       if (err) res.json(err);
 
-      res.json({ message: "Successfully deleted" });
+      res.json({ _id: taskId });
     }
   );
 };

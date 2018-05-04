@@ -25,7 +25,9 @@ class App extends Component {
           <div className="columns level">
             <div className="column level-item">
               <NewTask />
-              <TasksList />
+              <div className="is-4">
+                <TasksList />
+              </div>
             </div>
           </div>
         </BrowserRouter>

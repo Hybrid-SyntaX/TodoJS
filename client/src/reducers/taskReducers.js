@@ -1,38 +1,31 @@
 import * as types from "../actions/types";
+const sortByCreationDate = (a, b) => a.creationDate < b.creationDate;
 
+const updateState = (state, action) => {
+  return state
+    .filter(t => t._id !== action.payload._id)
+    .concat(action.payload)
+    .sort(sortByCreationDate);
+};
 export default function(state = null, action) {
-  console.log("ACTION:", action);
-  console.log("STATE:", state);
-
   switch (action.type) {
     case types.FETCH_TASKS:
-      return action.payload || false;
+      return action.payload.sort(sortByCreationDate) || false;
+    case types.READ_TASK: //TEMPORARILY
+      return updateState(state, action);
     case types.UPDATE_TASK:
-      //console.log("**UPDATE TASK REDUCED");
-      //TEMP SOLUTION
-      //var index = state.findIndex(t => t._id === action.payload._id);
-      //console.log(index);
-      //return state.splice(index, 0, action.payload);
-      //state[index] = action.payload;
-
-      //return state;
-      return state
-        .filter(t => t._id !== action.payload._id)
-        .concat(action.payload);
+      return updateState(state, action);
       break;
     case types.NEW_TASK:
-      return state.concat([action.payload]);
+      return state.concat([action.payload]).sort(sortByCreationDate);
     case types.DELETE_TASK:
-      return state.filter(t => t._id !== action.payload._id);
-
+      return state
+        .filter(t => t._id !== action.payload._id)
+        .sort(sortByCreationDate);
     case types.DO_TASK:
-      return state
-        .filter(t => t._id !== action.payload._id)
-        .concat(action.payload);
+      return updateState(state, action);
     case types.UNDO_TASK:
-      return state
-        .filter(t => t._id !== action.payload._id)
-        .concat(action.payload);
+      return updateState(state, action);
 
     default:
       return state;

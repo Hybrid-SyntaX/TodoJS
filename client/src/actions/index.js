@@ -6,6 +6,10 @@ export const fetchTasks = () => async dispatch => {
   const res = await axios.get("/api/tasks");
   dispatch({ type: types.FETCH_TASKS, payload: res.data });
 };
+export const readTask = taskId => async dispatch => {
+  const res = await axios.get("/api/tasks/" + taskId);
+  dispatch({ type: types.READ_TASK, payload: res.data });
+};
 
 export const newTask = task => async dispatch => {
   const res = await axios.post("/api/tasks", task);

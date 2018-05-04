@@ -4,3 +4,4 @@ export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "NEW_TASK";
 export const DO_TASK = "DO_TASK";
 export const UNDO_TASK = "UNDO_TASK";
+export const READ_TASK = "READ_TASK";
